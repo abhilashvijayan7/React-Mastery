@@ -4,7 +4,10 @@
   "description": "This is react-mastery by Abhilash M",
   
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start":"parcel index.html",
+    "build" : "parcel build index.html"
+
   },
   "repository": {
     "type": "git",
