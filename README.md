@@ -19,3 +19,21 @@
 - Https
 - Tree shaking - remove unused code for you
 - Different dev and prod bundles
+
+/*
+* Header
+- logo
+- nav items
+*body
+-search
+-RestaurantContainer
+--RestaurantCard
+---img
+---name of restaurant,star rating,cuisine,delivery time
+*footer
+-Copyright
+-links
+-address
+-contact
+*/
+

@@ -19,11 +19,12 @@ list-style: none;
 }
 .nav-items{
     margin-right: 10px;
+
 }
 .res-card{
     width: 200px;
    
-   margin: 10px;
+   margin: 9px;
     padding: 10px;
     /* white-space: pre-line; 
     overflow-wrap: break-word;
@@ -31,7 +32,7 @@ list-style: none;
   overflow-y: auto; */
 
 }
-.search{
+.filter{
     padding: 10px;
 }
 .food-img{
@@ -41,10 +42,45 @@ list-style: none;
     
 }
 .res-card:hover{
-    border: 1px solid black;
+    outline: 1px solid black;
     cursor: pointer;
 }
 .resto-container{
     display: flex;
     flex-wrap: wrap;
+    justify-content:space-evenl;
+}
+.filter-btn:hover{
+cursor: pointer;
+}
+.shimmer-card{
+    height: 400px;
+    width: 200px;
+    background-color: rgb(225, 223, 223);
+    margin: 9px;
+    margin-top: 20px;
+    padding: 10px;
+}
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenl;
+}
+.login-btn{
+    color: azure;
+    background-color: black;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.nav-items ul{
+    display: flex;
+    align-items: center;
+}
+.search-filter-container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
 }
