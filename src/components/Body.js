@@ -5,8 +5,8 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resData1, setResData1] = useState(resData);
-  console.log(resData);
   const [searchText, setSearchText] = useState("");
+  const [filterResto , setFilterResto]= useState(resData)
   useEffect(() => {
     fetchData();
   }, []);
@@ -19,13 +19,17 @@ const Body = () => {
       let response = await data.json();
 
       setResData1(
-        response?.data?.success?.cards[3]?.gridWidget?.gridElements
+        response?.data?.success?.cards[2]?.gridWidget?.gridElements
+          ?.infoWithStyle?.restaurants
+      );
+      setFilterResto(
+        response?.data?.success?.cards[2]?.gridWidget?.gridElements
           ?.infoWithStyle?.restaurants
       );
     } catch (error) {
       setTimeout(() => {
         fetchData();
-      }, 500);
+      },500);
     }
   };
 
@@ -51,7 +55,7 @@ const Body = () => {
                   .toLowerCase()
                   .includes(searchText.toLowerCase())
               );
-              setResData1(searchedData);
+              setFilterResto(searchedData);
             }}
           >
             Search
@@ -65,7 +69,7 @@ const Body = () => {
                 return cardData.info.avgRating > 4;
               });
               setResData1(filterData);
-              
+
             }}
           >
             Top rated restaurant
@@ -73,7 +77,7 @@ const Body = () => {
         </div>
       </div>
       <div className="resto-container">
-        {resData1.map((cardData) => {
+        {filterResto.map((cardData) => {
           return (
             <RestaurantCard key={cardData?.info?.id} cardData={cardData} />
           );
