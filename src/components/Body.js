@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [resData1, setResData1] = useState(resData);
+  const [resData1, setResData1] = useState(resData || []);   
   const [searchText, setSearchText] = useState("");
-  const [filterResto , setFilterResto]= useState(resData)
+  const [filterResto, setFilterResto] = useState(resData || []);
+  
   useEffect(() => {
     fetchData();
   }, []);
@@ -15,25 +16,26 @@ const Body = () => {
     try {
       let data = await fetch(
         "https://www.swiggy.com/mapi/homepage/getCards?lat=11.2903199&lng=75.7746414"
+        
       );
+      
       let response = await data.json();
-
       setResData1(
-        response?.data?.success?.cards[2]?.gridWidget?.gridElements
+        response?.data?.success?.cards[3]?.gridWidget?.gridElements
           ?.infoWithStyle?.restaurants
       );
       setFilterResto(
-        response?.data?.success?.cards[2]?.gridWidget?.gridElements
+        response?.data?.success?.cards[3]?.gridWidget?.gridElements
           ?.infoWithStyle?.restaurants
       );
     } catch (error) {
       setTimeout(() => {
         fetchData();
-      },500);
+      }, 500);
     }
   };
 
-  return resData1.length == 0 ? (
+  return resData1 && resData1.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body-container">
@@ -65,11 +67,10 @@ const Body = () => {
           <button
             className="filter-btn"
             onClick={() => {
-              const filterData = resData.filter((cardData) => {
+              const filterData = resData1.filter((cardData) => {
                 return cardData.info.avgRating > 4;
               });
-              setResData1(filterData);
-
+              setFilterResto(filterData);
             }}
           >
             Top rated restaurant
