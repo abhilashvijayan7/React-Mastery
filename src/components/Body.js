@@ -10,9 +10,10 @@ const Body = () => {
   
   useEffect(() => {
     fetchData();
+    
   }, []);
 
-  const fetchData = async () => {
+  const fetchData = async () => { 
     try {
       let data = await fetch(
         "https://www.swiggy.com/mapi/homepage/getCards?lat=11.2903199&lng=75.7746414"
@@ -20,13 +21,14 @@ const Body = () => {
       );
       
       let response = await data.json();
+    
       setResData1(
         response?.data?.success?.cards[3]?.gridWidget?.gridElements
-          ?.infoWithStyle?.restaurants
+          ?.infoWithStyle?.restaurants || []
       );
       setFilterResto(
         response?.data?.success?.cards[3]?.gridWidget?.gridElements
-          ?.infoWithStyle?.restaurants
+          ?.infoWithStyle?.restaurants|| []
       );
     } catch (error) {
       setTimeout(() => {
