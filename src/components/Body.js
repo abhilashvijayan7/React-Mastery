@@ -17,7 +17,6 @@ const Body = () => {
     try {
       let data = await fetch(
         "https://www.swiggy.com/mapi/homepage/getCards?lat=11.2903199&lng=75.7746414"
-        
       );
       
       let response = await data.json();
